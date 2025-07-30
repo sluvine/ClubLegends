@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Club Legends"
-run/main_scene="uid://b8rhyrh3adwut"
+config/version="dev"
+run/main_scene="uid://cwbgjyxsxovv7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,3 +21,7 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/multi_spliter_container/plugin.cfg")
