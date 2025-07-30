@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8rhyrh3adwut"]
+
+[ext_resource type="Script" uid="uid://bulvd3vpo8mdi" path="res://scenes/scripts/football_pitch.gd" id="1_dme8d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsfk1"]
+size = Vector2(1000, 640)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmtd6"]
+size = Vector2(165, 402)
+
+[node name="FootballPitch" type="Node2D"]
+script = ExtResource("1_dme8d")
+metadata/_edit_vertical_guides_ = [640.0]
+
+[node name="PlayingSurface" type="CanvasLayer" parent="."]
+
+[node name="SurfaceRect" type="ColorRect" parent="PlayingSurface"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.141176, 0.321569, 0.0784314, 1)
+
+[node name="PitchAreas" type="CanvasLayer" parent="PlayingSurface"]
+
+[node name="FieldOfPlay" type="Area2D" parent="PlayingSurface/PitchAreas"]
+position = Vector2(640, 360)
+
+[node name="FieldOfPlayCollision" type="CollisionShape2D" parent="PlayingSurface/PitchAreas/FieldOfPlay"]
+shape = SubResource("RectangleShape2D_vsfk1")
+debug_color = Color(0, 0.647059, 0.498039, 0.176471)
+
+[node name="CenterLine" type="Line2D" parent="PlayingSurface/PitchAreas/FieldOfPlay/FieldOfPlayCollision" groups=["field_lines"]]
+points = PackedVector2Array(0, -321, 0, 321)
+width = 2.0
+
+[node name="TouchLineTop" type="Line2D" parent="PlayingSurface/PitchAreas/FieldOfPlay/FieldOfPlayCollision" groups=["field_lines"]]
+points = PackedVector2Array(-501, -321, 501, -321)
+width = 2.0
+
+[node name="TouchLineBottom" type="Line2D" parent="PlayingSurface/PitchAreas/FieldOfPlay/FieldOfPlayCollision" groups=["field_lines"]]
+points = PackedVector2Array(-501, 321, 501, 321)
+width = 2.0
+
+[node name="EndLineLeft" type="Line2D" parent="PlayingSurface/PitchAreas/FieldOfPlay/FieldOfPlayCollision" groups=["field_lines"]]
+points = PackedVector2Array(-500, -322, -500, 322)
+width = 2.0
+
+[node name="EndLineRight" type="Line2D" parent="PlayingSurface/PitchAreas/FieldOfPlay/FieldOfPlayCollision" groups=["field_lines"]]
+points = PackedVector2Array(500, -322, 500, 322)
+width = 2.0
+
+[node name="LeftPenaltyArea" type="Area2D" parent="PlayingSurface/PitchAreas/FieldOfPlay/FieldOfPlayCollision"]
+position = Vector2(-500, 0)
+
+[node name="LeftPenaltyAreaCollision" type="CollisionShape2D" parent="PlayingSurface/PitchAreas/FieldOfPlay/FieldOfPlayCollision/LeftPenaltyArea"]
+position = Vector2(82.5, 0)
+shape = SubResource("RectangleShape2D_xmtd6")
+
+[node name="LeftPenaltyAreaTopLine" type="Line2D" parent="PlayingSurface/PitchAreas/FieldOfPlay/FieldOfPlayCollision/LeftPenaltyArea/LeftPenaltyAreaCollision" groups=["field_lines"]]
+points = PackedVector2Array(-83.5, -201, 84.5, -201)
+width = 2.0
+
+[node name="LeftPenaltyAreaBottomLine" type="Line2D" parent="PlayingSurface/PitchAreas/FieldOfPlay/FieldOfPlayCollision/LeftPenaltyArea/LeftPenaltyAreaCollision" groups=["field_lines"]]
+points = PackedVector2Array(-83.5, 201, 84.5, 201)
+width = 2.0
+
+[node name="LeftPenaltyAreaLongLine" type="Line2D" parent="PlayingSurface/PitchAreas/FieldOfPlay/FieldOfPlayCollision/LeftPenaltyArea/LeftPenaltyAreaCollision" groups=["field_lines"]]
+points = PackedVector2Array(83.5, -202, 83.5, 202)
+width = 2.0
+
+[node name="RightPenaltyArea" type="Area2D" parent="PlayingSurface/PitchAreas/FieldOfPlay/FieldOfPlayCollision"]
+position = Vector2(500, 0)
+
+[node name="RightPenaltyAreaCollision" type="CollisionShape2D" parent="PlayingSurface/PitchAreas/FieldOfPlay/FieldOfPlayCollision/RightPenaltyArea"]
+position = Vector2(-82.5, 0)
+shape = SubResource("RectangleShape2D_xmtd6")
+
+[node name="RightPenaltyAreaTopLine" type="Line2D" parent="PlayingSurface/PitchAreas/FieldOfPlay/FieldOfPlayCollision/RightPenaltyArea/RightPenaltyAreaCollision" groups=["field_lines"]]
+points = PackedVector2Array(-84.5, -201, 83.5, -201)
+width = 2.0
+
+[node name="RightPenaltyAreaBottomLine" type="Line2D" parent="PlayingSurface/PitchAreas/FieldOfPlay/FieldOfPlayCollision/RightPenaltyArea/RightPenaltyAreaCollision" groups=["field_lines"]]
+points = PackedVector2Array(-84.5, 201, 83.5, 201)
+width = 2.0
+
+[node name="RightPenaltyAreaLongLine" type="Line2D" parent="PlayingSurface/PitchAreas/FieldOfPlay/FieldOfPlayCollision/RightPenaltyArea/RightPenaltyAreaCollision" groups=["field_lines"]]
+points = PackedVector2Array(-83.5, -202, -83.5, 202)
+width = 2.0
